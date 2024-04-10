@@ -47,7 +47,7 @@ public class ProgressAbstractGraphicBean extends Bean implements Serializable {
         this.series.put("Identification", new LineChartSeries("Identification"));
 
         for (DisciplineEntity disciplineEntity : this.discipline) {
-            if (!disciplineEntity.getName().equals("Acceptance")) {
+            if (!"Acceptance".equals(disciplineEntity.getName())) {
                 this.series.put(disciplineEntity.getName(), new LineChartSeries(disciplineEntity.getName()));
             }
         }
@@ -81,7 +81,7 @@ public class ProgressAbstractGraphicBean extends Bean implements Serializable {
             this.series.get("Identification").set(iterationEntity.getCodeIteration(), progressDetailEjb.obtainPercentsOfIdentification(iterationEntity, this.project));
 
             for (DisciplineEntity disciplineEntity : this.discipline) {
-                if (!disciplineEntity.getName().equals("Acceptance")) {
+                if (!"Acceptance".equals(disciplineEntity.getName())) {
                     this.series.get(disciplineEntity.getName()).set(iterationEntity.getCodeIteration(), progressDetailEjb.getSumTotalProgressDetail(this.project, iterationEntity, disciplineEntity));
                 }
             }
@@ -92,7 +92,7 @@ public class ProgressAbstractGraphicBean extends Bean implements Serializable {
         this.linearModel.addSeries(this.series.get("Identification"));
 
         for (DisciplineEntity disciplineEntity : this.discipline) {
-            if (!disciplineEntity.getName().equals("Acceptance")) {
+            if (!"Acceptance".equals(disciplineEntity.getName())) {
                 this.linearModel.addSeries(this.series.get(disciplineEntity.getName()));
             }
         }
